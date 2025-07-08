@@ -6,7 +6,7 @@
 #    By: octavie <octavie@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:32 by octavie           #+#    #+#              #
-#    Updated: 2025/06/19 14:15:38 by octavie          ###   ########.fr        #
+#    Updated: 2025/07/08 16:50:50 by octavie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,12 @@ NC = \033[0m # No Color
 # =============================== SOURCES ===================================== #
 
 SRC_FILES	= \
+			main \
+			init \
+			parsing \
+			utils \
+			mylib \
+			
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(SRC_DIR), $(addsuffix .o, $(SRC_FILES)))
