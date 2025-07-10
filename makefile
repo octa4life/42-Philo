@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: octavie <octavie@student.42.fr>            +#+  +:+       +#+         #
+#    By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 10:24:32 by octavie           #+#    #+#              #
-#    Updated: 2025/07/08 16:50:50 by octavie          ###   ########.fr        #
+#    Updated: 2025/07/10 09:20:01 by obellil-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@
 NAME		= philo
 INCLUDE		= include
 LIBFT		= libft
-SRC_DIR		= srcs/
+SRC_DIR		= src
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -Isrc
 RM			= rm
 AR			= ar rcs
 
@@ -43,25 +43,23 @@ SRC_FILES	= \
 			parsing \
 			utils \
 			mylib \
-			
 
-SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		= 	$(addprefix $(SRC_DIR), $(addsuffix .o, $(SRC_FILES)))
+SRC = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
+OBJ = $(addprefix $(SRC_DIR)/, $(addsuffix .o, $(SRC_FILES)))
 
-# ============================== REGLES PRINCIPALES ========================== #
 
-# all:		$(NAME)
+# ================================= BUILD ===================================== #
 
-# $(NAME):	$(OBJ)
-# 			@echo "$(YELLOW)>>> Compilation de libft <<<$(DEF_COLOR)"
-# 			make -C $(LIBFT)
-# 			cp $(LIBFT)/libft.a .
-# 			$(CC) $(CFLAGS) $(SRC) -o $(NAME) libft.a
-# 			@echo "$(GREEN)>>> libft.a créé avec succès <<<$(DEF_COLOR)"
+all: $(NAME)
 
-# $(SRC_DIR)%.o: $(SRC_DIR)%.c
-# 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-# 			$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(NAME): $(OBJ)
+	@echo "$(BLUE)Compiling $(NAME)...$(NC)"
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@echo "$(GREEN)$(NAME) built successfully! 🚀$(NC)"
+
+$(SRC_DIR)%.o: $(SRC_DIR)%.c
+	@echo "$(CYAN)Compiling $<...$(NC)"
+	$(CC) $(CFLAGS) -c $< -o $@
 
 
 # ================================== CLEAN ==================================== #
@@ -69,15 +67,11 @@ OBJ 		= 	$(addprefix $(SRC_DIR), $(addsuffix .o, $(SRC_FILES)))
 clean:
 			@echo "$(YELLOW)Cleaning object files...$(NC)"
 			$(RM) -f $(OBJ)
-			make clean -sC $(LIBFT)
-			$(RM) -f libft.a
 			@echo "$(GREEN)Object files cleaned!🧹​$(NC)"
 
 fclean:		clean
 			@echo "$(YELLOW)Cleaning all files...$(NC)"
 			$(RM) -f $(NAME)
-			$(RM) -f libft.a
-			$(RM) -f $(LIBFT)/libft.a
 			@echo "$(GREEN)All files cleaned! 🧹​$(NC)"
 
 # ================================= REBUILD =================================== #
