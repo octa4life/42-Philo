@@ -6,7 +6,7 @@
 /*   By: obellil- <obellil-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 10:26:27 by octavie           #+#    #+#             */
-/*   Updated: 2025/07/10 09:30:53 by obellil-         ###   ########.fr       */
+/*   Updated: 2025/07/11 09:23:27 by obellil-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 
 typedef struct t_philo
 {
+	pthread_t		thread;
+	int				eat;
+	int				sleep;
+	
 
 }				s_philo;
 typedef struct t_data
