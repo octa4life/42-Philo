@@ -6,7 +6,7 @@
 /*   By: octavie <octavie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:24:52 by octavie           #+#    #+#             */
-/*   Updated: 2025/07/08 14:52:09 by octavie          ###   ########.fr       */
+/*   Updated: 2025/07/11 09:54:29 by octavie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,21 @@ int ft_atoi(const char *str)
         i++;
     }
     return (res *= s);
+}
+
+void	ft_putchar_fd(int c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
 }
